@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/14/yycdn/index.html">
 <meta property="og:site_name" content="小帅比的博客">
 <meta property="og:description" content="用友云cdn发布过程">
-<meta property="og:updated_time" content="2017-04-14T05:20:48.655Z">
+<meta property="og:updated_time" content="2017-04-14T05:23:26.340Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yycdn">
 <meta name="twitter:description" content="用友云cdn发布过程">
@@ -53,9 +53,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -94,8 +94,7 @@
 <li>压缩合并css<h3 id="页面优化"><a href="#页面优化" class="headerlink" title="页面优化"></a>页面优化</h3></li>
 <li>图使用岳明提供的第三方懒加载插件</li>
 </ul>
-<h2 id="2、静态文件cdn"><a href="#2、静态文件cdn" class="headerlink" title="2、静态文件cdn"></a>2、静态文件cdn</h2><h3 id="运行npm-run-cdn命令"><a href="#运行npm-run-cdn命令" class="headerlink" title="运行npm run cdn命令"></a>运行npm run cdn命令</h3><blockquote>
-<p>该命令里面包含三个命令（npm run dist &amp;&amp; node cdn &amp;&amp; node bin/copy），需要发布cdn或者把开发环境迁移到测试以及生产环境都只需要一键执行npm run cdn即可。<br>下面是cdn命令的说明：</p>
+<h2 id="2、静态文件cdn"><a href="#2、静态文件cdn" class="headerlink" title="2、静态文件cdn"></a>2、静态文件cdn</h2><h3 id="运行npm-run-cdn命令"><a href="#运行npm-run-cdn命令" class="headerlink" title="运行npm run cdn命令"></a>运行npm run cdn命令</h3><p> 该命令里面包含三个命令（npm run dist &amp;&amp; node cdn &amp;&amp; node bin/copy），需要发布cdn或者把开发环境迁移到测试以及生产环境都只需要一键执行npm run cdn即可。<br> 下面是cdn命令的说明：</p>
 <ul>
 <li>npm run dist命令<ul>
 <li>去掉mock数据</li>
@@ -107,26 +106,24 @@
 <li>把html和css里面的图片添加cdn,把requirejs添加cdn（包含所有的js和css）</li>
 </ul>
 </li>
-<li>node bin/copy命令<ul>
+<li><p>node bin/copy命令</p>
+<ul>
 <li>把静态资源复制到cdn发布环境</li>
 <li>把html复制到对应的发布环境</li>
 </ul>
+<p>(注：1、开发环境应该和发布环境在同一目录。2、命令执行完后提交生产环境，联系毛坤发布cdn,23环境可以自由发布，如果云市场的html里面图片路径变化后需要修改ftl模板 )</p>
 </li>
 </ul>
-<p>(注：1、开发环境应该和发布环境在同一目录。2、命令执行完后提交生产环境，联系毛坤发布cdn,23环境可以自由发布，如果云市场的html里面图片路径变化后需要修改ftl模板 )</p>
-</blockquote>
-<h2 id="3、版本控制"><a href="#3、版本控制" class="headerlink" title="3、版本控制"></a>3、版本控制</h2><blockquote>
-<p>因为项目中使用了requirejs来对路径统一管理，以及模块化，通过对比r.js、fis3、gulp等构建工具后发现没有一个单独的构建工具能给出一个完整的解决方案。通过研究发现r.j+fis3能完美解决，但是考虑到时间的紧迫性，所以最终得出了一个不是最优但是最简单的方案。</p>
+<h2 id="3、版本控制"><a href="#3、版本控制" class="headerlink" title="3、版本控制"></a>3、版本控制</h2><p>因为项目中使用了requirejs来对路径统一管理，以及模块化，通过对比r.js、fis3、gulp等构建工具后发现没有一个单独的构建工具能给出一个完整的解决方案。通过研究发现r.j+fis3能完美解决，但是考虑到时间的紧迫性，所以最终得出了一个不是最优但是最简单的方案。</p>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
 <li>通过第一次发布cdn后，若以后某一个js、css文件变化，我们在发布时需要修改该文件名，文件命名方式是文件名+ ‘_’ + 版本号，同步更新require.config.js里面的路径。</li>
 <li>通过第一次发布cdn后，若图修改后直接修改图片名称来进行版本化</li>
 </ul>
-</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/14/yycdn/" data-id="cj1hdyi23000504jrizn3wl2l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/14/yycdn/" data-id="cj1he1qk40002tojrhd2gxffx" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/用友云/">用友云</a></li></ul>
@@ -138,7 +135,7 @@
 <nav id="article-nav">
   
     <a href="/2017/04/13/r-js/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           r.js
@@ -158,7 +155,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Catégories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端优化/">前端优化</a></li></ul>
     </div>
@@ -168,7 +165,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用友云/">用友云</a></li></ul>
     </div>
@@ -178,7 +175,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
       <a href="/tags/test/" style="font-size: 20px;">test</a> <a href="/tags/用友云/" style="font-size: 10px;">用友云</a>
     </div>
@@ -197,7 +194,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -230,7 +227,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 陈进飞<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
