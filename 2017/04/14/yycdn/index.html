@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/14/yycdn/index.html">
 <meta property="og:site_name" content="小帅比的博客">
 <meta property="og:description" content="用友云cdn发布过程">
-<meta property="og:updated_time" content="2017-04-14T05:07:50.803Z">
+<meta property="og:updated_time" content="2017-04-14T05:20:48.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yycdn">
 <meta name="twitter:description" content="用友云cdn发布过程">
@@ -87,7 +87,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="用友云cdn发布过程"><a href="#用友云cdn发布过程" class="headerlink" title="用友云cdn发布过程"></a>用友云cdn发布过程</h1><a id="more"></a>
-<h2 id="1、js-css等优化"><a href="#1、js-css等优化" class="headerlink" title="1、js/css等优化"></a>1、js/css等优化</h2><h2 id="2、页面优化"><a href="#2、页面优化" class="headerlink" title="2、页面优化"></a>2、页面优化</h2><h2 id="3、静态文件cdn"><a href="#3、静态文件cdn" class="headerlink" title="3、静态文件cdn"></a>3、静态文件cdn</h2><h3 id="运行npm-run-cdn命令"><a href="#运行npm-run-cdn命令" class="headerlink" title="运行npm run cdn命令"></a>运行npm run cdn命令</h3><blockquote>
+<h2 id="1、页面优化"><a href="#1、页面优化" class="headerlink" title="1、页面优化"></a>1、页面优化</h2><h3 id="图片优化"><a href="#图片优化" class="headerlink" title="图片优化"></a>图片优化</h3><ul>
+<li>压缩图片</li>
+<li>合并雪碧图<h3 id="js优化"><a href="#js优化" class="headerlink" title="js优化"></a>js优化</h3></li>
+<li>压缩合并js<h3 id="css优化"><a href="#css优化" class="headerlink" title="css优化"></a>css优化</h3></li>
+<li>压缩合并css<h3 id="页面优化"><a href="#页面优化" class="headerlink" title="页面优化"></a>页面优化</h3></li>
+<li>图使用岳明提供的第三方懒加载插件</li>
+</ul>
+<h2 id="2、静态文件cdn"><a href="#2、静态文件cdn" class="headerlink" title="2、静态文件cdn"></a>2、静态文件cdn</h2><h3 id="运行npm-run-cdn命令"><a href="#运行npm-run-cdn命令" class="headerlink" title="运行npm run cdn命令"></a>运行npm run cdn命令</h3><blockquote>
 <p>该命令里面包含三个命令（npm run dist &amp;&amp; node cdn &amp;&amp; node bin/copy），需要发布cdn或者把开发环境迁移到测试以及生产环境都只需要一键执行npm run cdn即可。<br>下面是cdn命令的说明：</p>
 <ul>
 <li>npm run dist命令<ul>
@@ -108,7 +115,7 @@
 </ul>
 <p>(注：1、开发环境应该和发布环境在同一目录。2、命令执行完后提交生产环境，联系毛坤发布cdn,23环境可以自由发布，如果云市场的html里面图片路径变化后需要修改ftl模板 )</p>
 </blockquote>
-<h2 id="4、版本控制"><a href="#4、版本控制" class="headerlink" title="4、版本控制"></a>4、版本控制</h2><blockquote>
+<h2 id="3、版本控制"><a href="#3、版本控制" class="headerlink" title="3、版本控制"></a>3、版本控制</h2><blockquote>
 <p>因为项目中使用了requirejs来对路径统一管理，以及模块化，通过对比r.js、fis3、gulp等构建工具后发现没有一个单独的构建工具能给出一个完整的解决方案。通过研究发现r.j+fis3能完美解决，但是考虑到时间的紧迫性，所以最终得出了一个不是最优但是最简单的方案。</p>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
 <li>通过第一次发布cdn后，若以后某一个js、css文件变化，我们在发布时需要修改该文件名，文件命名方式是文件名+ ‘_’ + 版本号，同步更新require.config.js里面的路径。</li>
@@ -119,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/14/yycdn/" data-id="cj1hdlhhl000594jr27nh0e4o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/14/yycdn/" data-id="cj1hdyi23000504jrizn3wl2l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/用友云/">用友云</a></li></ul>
