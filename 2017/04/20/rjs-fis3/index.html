@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>rjs-fis3 | 小帅比的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="r.js和fis3的使用概要：因为云市场和云官网我们使用requirejs来模块化，资源统一管理，所以项目中脚本都是AMD格式的，在项目上线之前我们考虑到性能优化，图合并、懒加载、js和css的压缩合并等操作，因为项目中使用了requirejs，在优化期初我们首先考虑到的是requirejs自带的r.js，但是在使用过程中发现r.js无法满足我们需要，我们想到了百度提供的fis3，但是研究发现fi">
+<meta name="keywords" content="构建工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rjs-fis3">
+<meta property="og:url" content="http://yoursite.com/2017/04/20/rjs-fis3/index.html">
+<meta property="og:site_name" content="小帅比的博客">
+<meta property="og:description" content="r.js和fis3的使用概要：因为云市场和云官网我们使用requirejs来模块化，资源统一管理，所以项目中脚本都是AMD格式的，在项目上线之前我们考虑到性能优化，图合并、懒加载、js和css的压缩合并等操作，因为项目中使用了requirejs，在优化期初我们首先考虑到的是requirejs自带的r.js，但是在使用过程中发现r.js无法满足我们需要，我们想到了百度提供的fis3，但是研究发现fi">
+<meta property="og:updated_time" content="2017-04-20T09:32:03.117Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rjs-fis3">
+<meta name="twitter:description" content="r.js和fis3的使用概要：因为云市场和云官网我们使用requirejs来模块化，资源统一管理，所以项目中脚本都是AMD格式的，在项目上线之前我们考虑到性能优化，图合并、懒加载、js和css的压缩合并等操作，因为项目中使用了requirejs，在优化期初我们首先考虑到的是requirejs自带的r.js，但是在使用过程中发现r.js无法满足我们需要，我们想到了百度提供的fis3，但是研究发现fi">
+  
+    <link rel="alternate" href="/atom.xml" title="小帅比的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小帅比的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-rjs-fis3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/20/rjs-fis3/" class="article-date">
+  <time datetime="2017-04-20T07:56:31.000Z" itemprop="datePublished">2017-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      rjs-fis3
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="r-js和fis3的使用"><a href="#r-js和fis3的使用" class="headerlink" title="r.js和fis3的使用"></a>r.js和fis3的使用</h1><p>概要：因为云市场和云官网我们使用requirejs来模块化，资源统一管理，所以项目中脚本都是AMD格式的，在项目上线之前我们考虑到性能优化，图合并、懒加载、js和css的压缩合并等操作，因为项目中使用了requirejs，在优化期初我们首先考虑到的是requirejs自带的r.js，但是在使用过程中发现r.js无法满足我们需要，我们想到了百度提供的fis3，但是研究发现fis也无法满足我们的需求，但是通过r.js和fis3配合使用可以满足，但是由于对这两工具不熟悉，项目面临上线，我们最终解决方案是使用gulp压缩js/css和图压缩以及合并雪碧图,手动添加版本号。</p>
+<a id="more"></a>
+<h2 id="r-js"><a href="#r-js" class="headerlink" title="r.js"></a>r.js</h2><p>r.js是requireJS的优化（Optimizer）工具，可以实现前端文件的压缩与合并，在requireJS异步按需加载的基础上进一步提供前端优化，减小前端文件大小、减少对服务器的文件请求。</p>
+<h3 id="1、使用步骤"><a href="#1、使用步骤" class="headerlink" title="1、使用步骤"></a>1、使用步骤</h3><ul>
+<li><a href="https://github.com/VaJoy/BlogDemo/tree/master/tool/rjs" target="_blank" rel="external">下载r.js</a>并把r.js放在项目根目录，在配置r.js之前要确保已安装node环境.</li>
+<li><p>在项目根目录下创建build.js，基本内容如下配置（<a href="http://www.chenliqiang.cn/node/22" target="_blank" rel="external">更多配置说明</a>）：</p>
+<pre><code>{
+// app顶级目录，非必选项。如果指定值，baseUrl则会以此为相对路径
+appDir: &quot;./&quot;,
+
+// 模块根目录。默认情况下所有模块资源都相对此目录。
+// 若该值未指定，模块则相对build文件所在目录。
+// 若appDir值已指定，模块根目录baseUrl则相对appDir。
+baseUrl: &quot;./cloud/src&quot;,
+
+// 指定输出目录，若值未指定，则相对 build 文件所在目录
+dir: &quot;./dist&quot;,
+
+ // JS 文件优化方式，目前支持以下几种：
+ //   uglify: （默认） 使用 UglifyJS 来压缩代码
+ //   closure: 使用 Google&apos;s Closure Compiler 的简单优化模式
+ //   closure.keepLines: 使用 closure，但保持换行
+ //   none: 不压缩代码
+optimize: &quot;uglify&quot;,
+
+// CSS 优化方式，目前支持以下几种：
+// none: 不压缩，仅合并
+// standard: 标准压缩，移除注释、换行，以及可能导致 IE 解析出错的代码
+// standard.keepLines: 除标准压缩外，保留换行
+// standard.keepComments: 除标准压缩外，保留注释 (r.js 1.0.8+)
+// standard.keepComments.keepLines: 除标准压缩外，保留注释和换行 (r.js 1.0.8+)
+optimizeCss: &quot;standard&quot;,
+
+// 配置文件目录
+mainConfigFile: &quot;cloud/src/conf/require.config.js&quot;,
+
+//如果设置为true，在输出目录将会删除掉已经合并了的文件
+removeCombined: true,
+
+ // 不优化某些文件
+fileExclusionRegExp: /^(r|build)\.js|node_modules|market|git|bin/,
+
+// 模块 alias
+modules: [
+    {
+        name: &quot;aboutus&quot;,
+    },
+    {
+        name: &quot;activity&quot;,
+      /*  exclude: [
+            &quot;jquery&quot;,
+            &quot;app/common&quot;,
+            &quot;pkg/DatePicker/app&quot;
+        ]*/
+    }
+]
+}
+</code></pre></li>
+<li><p>require.config.js的配置</p>
+<pre><code>require.config({
+baseUrl: &apos;../&apos;,
+paths: {
+    tweenmax: &quot;vendor/tweenMaxTweenMax.min&quot;,
+    style: &quot;vendor/require/css&quot;,
+    jquery: &quot;vendor/jquery/jquery.min&quot;,
+    wheelmenu: &quot;vendor/wheelmenu/jquery.wheelmenu&quot;,
+    template: &apos;vendor/artTemplate/template-debug&apos;,
+    isjs: &quot;vendor/isjs/is.min&quot;,
+    slick: &apos;vendor/slick/js/slick.min&apos;,
+    rellax: &apos;vendor/rellax/rellax.min&apos;,
+}
+}
+});
+</code></pre></li>
+<li><p>build.js配置好后就可以执行命令了，在根目录下打开cmd命令行，输入node r.js -o build.js回车就可以看到优化后的js/css了。</p>
+</li>
+</ul>
+<h3 id="优点缺点分析"><a href="#优点缺点分析" class="headerlink" title="优点缺点分析"></a>优点缺点分析</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>1、解决了AMD格式的js压缩合并。</li>
+<li>2、压缩了css，如果在css文件中使用import也可以合并css。</li>
+<li>3、因为项目使用AMD模式，所以使用r.js是最优选择。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>1、项目中使用了requirejs提供的css.js插件，但是r.js不支持。</li>
+<li>2、项目的 版本号只能通过在require.config.js中添加urlArgs参数来统一更新，没法给文件添加MD5来单个文件更新版本号。</li>
+<li>3、虽然支持非AMD格式，如果jquery可以完美压缩合并，但是某些提供了AMD格式的支持的jquery插件引入后报错。</li>
+<li>4、不能压缩图片和合并雪碧图</li>
+</ul>
+<h2 id="fis3"><a href="#fis3" class="headerlink" title="fis3"></a>fis3</h2><p>解决前端开发中自动化工具、性能优化、模块化框架、开发规范、代码部署、开发流程等问题</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li>下载安装fis3命令（npm install -g fis3）</li>
+<li><p>在项目根目录下创建fis-conf.js文件，内容如下（<a href="http://fis.baidu.com/" target="_blank" rel="external">更多配置</a>）：</p>
+<pre><code>  //合成雪碧图
+  fis.match(&apos;*/less/widget/{footer,header}.less&apos;, {
+    useSprite : true
+  });
+
+  // fis-parser-less 插件进行解析
+fis.match(&apos;*/less/page/*.less&apos;, {
+  parser: fis.plugin(&apos;less&apos;),
+   //.less 文件后缀构建后被改成 .css 文件
+   rExt: &apos;.css&apos;,
+   useHash:true,
+   //optimizer: fis.plugin(&apos;clean-css&apos;),
+   release: function($0){return $0[0] = $0[0].replace(&apos;/less/&apos;, &apos;/css/&apos;);}
+})
+
+//AMD格式配置
+fis.hook(&apos;amd&apos;, {
+  baseUrl: &apos;./src/&apos;,
+  paths: {
+tweenmax: &quot;vendor/tweenMaxTweenMax.min&quot;,
+style: &quot;vendor/require/css&quot;,
+jquery: &quot;vendor/jquery/jquery&quot;,
+wheelmenu: &quot;vendor/wheelmenu/jquery.wheelmenu&quot;,
+template: &apos;vendor/artTemplate/template-debug&apos;,
+isjs: &quot;vendor/isjs/is.min&quot;,
+slick: &apos;vendor/slick/js/slick.min&apos;,
+rellax: &apos;vendor/rellax/rellax.min&apos;,
+mock: &apos;vendor/mockjs/mock.min&apos;,
+artDialog: &apos;vendor/aui-artDialog/js/dialog-min&apos;,
+data: &apos;data/data&apos;,
+util: &quot;public/js/util&quot;,
+index: &apos;js/index/index&apos;,
+details: &apos;js/detail/details&apos;,
+solution: &quot;js/solution/solution&quot;,
+exampleDetails: &quot;js/exampleDetail/exampleDetails&quot;,
+activity: &quot;js/activity/activity&quot;,
+cloudClient: &quot;js/cloudClient/cloudClient&quot;,
+header: &apos;js/header/header&apos;,
+cooperativeEcology: &apos;js/cooperativeEcology/cooperativeEcology&apos;,
+aboutus: &apos;js/aboutus/aboutus&apos;,
+cloud_finance: &apos;js/cloud_finance/cloud_finance&apos;,
+searchList: &apos;js/searchList/searchList&apos;,
+cloud_assist: &apos;js/cloud_assist/cloud_assist&apos;,
+cloud_buy: &apos;js/cloud_buy/cloud_buy&apos;,
+cloud_hr: &apos;js/cloud_hr/cloud_hr&apos;,
+cloud_connect: &apos;js/cloud_connect/cloud_connect&apos;,
+cloud_ebill: &apos;js/cloud_ebill/cloud_ebill&apos;,
+cloud_sales: &apos;js/cloud_sales/cloud_sales&apos;,
+http_404:&apos;js/http_404/http_404&apos;,
+http_500:&apos;js/http_500/http_500&apos;,
+dynamic: &apos;js/dynamic/dynamic&apos;,
+solution_all: &apos;js/solution_all/solution_all&apos;,
+cloud_platform: &apos;js/cloud_platform/cloud_platform&apos;,
+solazy : &apos;vendor/solazy/jquery.solazy.min&apos;
+},
+ shim: {
+//只支持非AMD格式的js
+   }
+})
+
+// fis-optimizer-uglify-js 插件进行压缩，已内置
+fis.match(&apos;*/{js,public}/**/*.js&apos;, {
+  isMod: true,
+  useHash:true,
+  optimizer: fis.plugin(&apos;uglify-js&apos;)
+});
+
+fis.match(&apos;::package&apos;, {
+    spriter : fis.plugin(&apos;csssprites&apos;),
+    postpackager: fis.plugin(&apos;loader&apos;, {
+        allInOne: true,
+        resourceType: &apos;amd&apos;,
+        useInlineMap: true // 资源映射表内嵌
+    })
+})
+</code></pre></li>
+<li><p>构建项目，当fis-conf.js配置好后执行命令(fis3 release -d ./dist)</p>
+</li>
+</ul>
+<h3 id="优点缺点分析-1"><a href="#优点缺点分析-1" class="headerlink" title="优点缺点分析"></a>优点缺点分析</h3><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>1、能压缩图片和合并雪碧图。</li>
+<li>2、压缩了css，如果在css文件中使用import也可以合并css。</li>
+<li>3、能压缩requirejs文件，并且能给文件添加MD5版本号，而且可以把依赖的css和js都更新，但是依赖的css不能放在shim里面，应该放在require()时或者define()函数里面。</li>
+</ul>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>1、项目中使用了requirejs提供的css.js插件，但是不支持。</li>
+<li>2、只能压缩requirejs,给资源所依赖的资源添加局对路径依赖，并不能合并AMD模式的js。</li>
+<li>3、因为项目中已经添加了css.js，在shim中配置了依赖，改动起来比较大。</li>
+</ul>
+<h2 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a>gulp</h2><p>如果用gulp来合并压缩AMD模式的js，提供了对应的插件，但是插件的源码和requirejs源码都需要修改，问题很严重，有兴趣的可以晚上查一下，有很多资料。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="项目中使用了requirejs"><a href="#项目中使用了requirejs" class="headerlink" title="项目中使用了requirejs"></a>项目中使用了requirejs</h3><p>如果项目中使用了requirejs,通过我们不靠谱的研究可以给出一个比较合适的方案。</p>
+<ul>
+<li>如果只要求合并压缩js和css，则直接使用r.js。</li>
+<li>如果要给项目资源添加MD5版本号，不需要和js，则使用fis3。</li>
+<li>如果要合并压缩js和css,压缩图片，生成雪碧图，给文件添加MD5版本号，则可以先使用r.js合并压缩js,其他功能交给fis3来完成。<h3 id="云市场和官网的优化"><a href="#云市场和官网的优化" class="headerlink" title="云市场和官网的优化"></a>云市场和官网的优化</h3>由于时间问题，我们使用gulp来压缩js、css、图片、合并雪碧图、手动给requirejs添加urlArgs时间戳来进行版本控制。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/20/rjs-fis3/" data-id="cj1q7mwhz0004vkjr2bxro1us" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构建工具/">构建工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/14/yycdn/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          yycdn
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端优化/">前端优化</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/构建工具/">构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用友云/">用友云</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/test/" style="font-size: 20px;">test</a> <a href="/tags/构建工具/" style="font-size: 10px;">构建工具</a> <a href="/tags/用友云/" style="font-size: 10px;">用友云</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/20/rjs-fis3/">rjs-fis3</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/14/yycdn/">yycdn</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/13/r-js/">r.js</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/13/test/">requrejs优化</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/13/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 陈进飞<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
