@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>reactjsx001 | 小帅比的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近学习react,记录一些很零碎的知识点，很多是使用react时不小心就回出错或者不知道应该怎么处理的的方案。">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="reactjsx001">
+<meta property="og:url" content="http://yoursite.com/2017/04/27/reactjsx001/index.html">
+<meta property="og:site_name" content="小帅比的博客">
+<meta property="og:description" content="最近学习react,记录一些很零碎的知识点，很多是使用react时不小心就回出错或者不知道应该怎么处理的的方案。">
+<meta property="og:updated_time" content="2017-04-27T11:38:06.317Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="reactjsx001">
+<meta name="twitter:description" content="最近学习react,记录一些很零碎的知识点，很多是使用react时不小心就回出错或者不知道应该怎么处理的的方案。">
+  
+    <link rel="alternate" href="/atom.xml" title="小帅比的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小帅比的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-reactjsx001" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/27/reactjsx001/" class="article-date">
+  <time datetime="2017-04-27T10:55:36.000Z" itemprop="datePublished">2017-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      reactjsx001
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="最近学习react-记录一些很零碎的知识点，很多是使用react时不小心就回出错或者不知道应该怎么处理的的方案。"><a href="#最近学习react-记录一些很零碎的知识点，很多是使用react时不小心就回出错或者不知道应该怎么处理的的方案。" class="headerlink" title="最近学习react,记录一些很零碎的知识点，很多是使用react时不小心就回出错或者不知道应该怎么处理的的方案。"></a>最近学习react,记录一些很零碎的知识点，很多是使用react时不小心就回出错或者不知道应该怎么处理的的方案。</h1><a id="more"></a>
+<p>1、如何在jsx里面添加多个class,并且有的class按条件是否添加<br>答：使用英文的`` 包裹起来，列如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;`cl cl-menu fe-cl-menu $&#123;self.state.status ? &apos;fe-cl-menu-active&apos; : &apos;&apos;&#125;`&#125;</div></pre></td></tr></table></figure></p>
+<p>2、jsx里面不能使用三目运算来一次返回一组元素，使用如下方法来实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;Col md=&#123;12&#125; className=&quot;button-muen&quot;&gt;</div><div class="line">  &#123;</div><div class="line">    this.state.isedit</div><div class="line">    ? (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;Button size=&quot;sm&quot; colors=&quot;primary&quot;  onClick=&#123;this.onSubmitDate&#125;&gt;保存&lt;/Button&gt;</div><div class="line">        &lt;Button size=&quot;sm&quot; shape=&quot;border&quot; style=&#123;&#123;marginLeft: &apos;8px&apos;&#125;&#125; onClick=&#123;this.onCancel&#125;&gt;取消&lt;/Button&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">    :&apos;&apos;</div><div class="line">  &#125;</div><div class="line">&lt;/Col&gt;</div></pre></td></tr></table></figure></p>
+<p>3、在jsx中的{}里面不能使用’;’结束。</p>
+<p>4、给组件设置参数如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;input ref=&quot;name&quot; name=&quot;name&quot;</div><div class="line"> disabled=&#123;!this.state.isedit&#125;</div><div class="line"> value=&#123;this.state.name&#125;</div><div class="line">onChange=&#123;this.onInputChange&#125;</div><div class="line">/&gt;</div></pre></td></tr></table></figure></p>
+<p>5、动态给json对象赋值时key是变量时应该如下操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">onInputChange(e)&#123;</div><div class="line">  let name = e.target.name;</div><div class="line">  this.setState(&#123;</div><div class="line">    [name]:ReactDOM.findDOMNode(this.refs[name]).value</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>6、在react里面如果要给表单双向绑定，应该如下操作(只要value={this.state.name}操作后，该输入框的显示值只能由state.name来决定，所以需要通过onChange事件来更改state.name的值)</p>
+<ul>
+<li><p>jsx里面的元素设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;input ref=&quot;name&quot; name=&quot;name&quot;</div><div class="line"> value=&#123;this.state.name&#125;</div><div class="line">onChange=&#123;this.onInputChange&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>onInputChange函数里面应该重新设置value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">onInputChange(e)&#123;</div><div class="line">  this.setState(&#123;</div><div class="line">    name:ReactDOM.findDOMNode(this.refs.name).value</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>7、只要在构造函数里面设置方法的this(this.onAdd = this.onAdd.bind(this)),那么在子函数里面调用该方法时this还是指向父组件.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/27/reactjsx001/" data-id="cj20az9w40006twjr7ggpvozj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/20/rjs-fis3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          rjs-fis3
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/构建工具/">构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用友云/">用友云</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/构建工具/" style="font-size: 10px;">构建工具</a> <a href="/tags/用友云/" style="font-size: 10px;">用友云</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/27/reactjsx001/">reactjsx001</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/20/rjs-fis3/">rjs-fis3</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/14/yycdn/">yycdn</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 陈进飞<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
