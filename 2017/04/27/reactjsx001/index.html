@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/27/reactjsx001/index.html">
 <meta property="og:site_name" content="小帅比的博客">
 <meta property="og:description" content="react最近学习react,记录一些很零碎的知识点，都是使用react时不小心会出错或者不知道应该怎么处理的的方案。">
-<meta property="og:updated_time" content="2017-05-06T08:24:06.355Z">
+<meta property="og:updated_time" content="2017-05-06T10:15:50.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="reactjsx001">
 <meta name="twitter:description" content="react最近学习react,记录一些很零碎的知识点，都是使用react时不小心会出错或者不知道应该怎么处理的的方案。">
@@ -55,7 +55,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -103,7 +103,8 @@
 <ul>
 <li>通过在类中通过箭头函数实现方法: update = e =&gt; {…}</li>
 <li>在构造函数里面绑定.this.update = this.update.bind(this)</li>
-<li>在元素事件上绑定.<div onclick="{this.update.bind(this)}">…</div></li>
+<li>在元素事件上绑定.<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div onClick=&#123;this.update.bind(this)&#125;&gt;...&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><p>1、访问表单事件被封装成跨浏览器的一致接口，可以通过e.target来访问事件的MOM节点。</p>
 <p>2、在react里面如果要给表单双向绑定，应该如下操作(只要value={this.state.name}操作后，该输入框的显示值只能由state.name来决定，所以需要通过onChange事件来更改state.name的值)</p>
@@ -153,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/27/reactjsx001/" data-id="cj2d42cax00032kjr6f7odrt5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/27/reactjsx001/" data-id="cj2d46s240000bsjr83wx38iv" class="article-share-link">Delen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
@@ -165,7 +166,7 @@
 <nav id="article-nav">
   
     <a href="/2017/04/20/rjs-fis3/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Nieuwer</strong>
       <div class="article-nav-title">
         
           rjs-fis3
@@ -175,7 +176,7 @@
   
   
     <a href="/2017/05/06/reeact-redux/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">reeact-redux</div>
     </a>
   
@@ -193,7 +194,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Labels</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reeact-redux/">reeact-redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/构建工具/">构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用友云/">用友云</a></li></ul>
     </div>
@@ -212,7 +213,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
     </div>
@@ -222,7 +223,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
