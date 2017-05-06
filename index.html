@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -83,15 +83,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>官方文档：<br>en: <a href="http://redux.js/org/" target="_blank" rel="external">http://redux.js/org/</a><br>cn: <a href="http://cn.redux.js.org/" target="_blank" rel="external">http://cn.redux.js.org/</a><br>安装 react-redux redux</p>
-<h2 id="action"><a href="#action" class="headerlink" title="action"></a>action</h2><p>行为，每一个行为一个action</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">export const addTodo = text =&gt; &#123;</div><div class="line">  return &#123;</div><div class="line">    type:&apos;ADD_TODO&apos;,</div><div class="line">    id: i++,</div><div class="line">    test</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export const setVisibility = filter =&gt; &#123;</div><div class="line">  return &#123;</div><div class="line">  type:&apos;SET_VISIBILITY&apos;,</div><div class="line">    filter</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export const toggleTodo = id =&gt; &#123;</div><div class="line">  return &#123;</div><div class="line">  type:&apos;TOGGLE_TODO&apos;,</div><div class="line">    id</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h2><p>纯函数,传入旧的state，输入一个新的state,可以使用combineReducers放一起<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">const todo = (state, action) =&gt; &#123;</div><div class="line">  switch(action.type)&#123;</div><div class="line">    case &quot;ADD_TODO&quot;:</div><div class="line">    return &#123;</div><div class="line">      id: action.id,</div><div class="line">      text: action.text,</div><div class="line">      completed: false</div><div class="line">    &#125;</div><div class="line">    case &quot;SET_VISIBILITY&quot;:</div><div class="line">    if(state.id !== action.id)&#123;</div><div class="line">      return  state</div><div class="line">    &#125;</div><div class="line">    return Object.assign(&#123;&#125;, &#123;</div><div class="line">        completed: !state.completed</div><div class="line">      &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const todos = (state, action) =&gt; &#123;</div><div class="line">  switch(action.type)&#123;</div><div class="line">    case &quot;ADD_TODO&quot;:</div><div class="line">    return [</div><div class="line">      ...state,</div><div class="line">      todo(undefined, action)</div><div class="line">    ]</div><div class="line">    case &apos;TOGGLE_TODO&apos;:</div><div class="line">      return state.map(t =&gt; todo(t, action))</div><div class="line">    default:</div><div class="line">    return state</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
+        <p>官方文档：<br>en: <a href="http://redux.js/org/">http://redux.js/org/</a><br>cn: <a href="http://cn.redux.js.org/">http://cn.redux.js.org/</a><br>安装 react-redux redux</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/05/06/reeact-redux/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/06/reeact-redux/" data-id="cj2d46s2r0003bsjr10ucsir9" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/05/06/reeact-redux/" data-id="cj2d4981f0001skjr9zekz6yf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reeact-redux/">reeact-redux</a></li></ul>
@@ -134,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/27/reactjsx001/" data-id="cj2d46s240000bsjr83wx38iv" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/04/27/reactjsx001/" data-id="cj2d4981q0004skjrkxvgr672" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
@@ -177,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/20/rjs-fis3/" data-id="cj2d46s2g0001bsjr1mmyqroi" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/04/20/rjs-fis3/" data-id="cj2d498180000skjr9ri92m91" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构建工具/">构建工具</a></li></ul>
@@ -220,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/14/yycdn/" data-id="cj2d46s3s0009bsjrsia9vab5" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/04/14/yycdn/" data-id="cj2d4981n0003skjr06om7q04" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/用友云/">用友云</a></li></ul>
@@ -242,7 +243,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Labels</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reeact-redux/">reeact-redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/构建工具/">构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用友云/">用友云</a></li></ul>
     </div>
@@ -261,7 +262,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
     </div>
@@ -271,7 +272,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
